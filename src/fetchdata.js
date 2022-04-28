@@ -6,8 +6,7 @@ class fetchdata extends React.Component {
 		super(props);
 
 		this.state = {
-			items: [],
-			DataisLoaded: false
+			items: []
 		};
 	}
 
@@ -17,14 +16,13 @@ class fetchdata extends React.Component {
 			.then((response) => response.json())
 			.then((json) => {
 				this.setState({
-					items: json,
-					DataisLoaded: true
+					items: json
 				});
 			})
 	}
 	render() {
-		const { DataisLoaded, items } = this.state;
-		if (!DataisLoaded) return <div>
+		const { items } = this.state;
+		if (items.length===0) return <div>
 			<h1> Loading... </h1> </div> ;
 
 		return (
@@ -44,9 +42,7 @@ class fetchdata extends React.Component {
           <td>{ item.body }</td>
         </tr>
         ))}
-		</table>
-				
-			
+		</table>	
 		</div>
 	);
 }
